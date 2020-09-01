@@ -1,0 +1,542 @@
+<html>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.2.3/milligram.min.css">
+  </head>
+  <body class="container" style="padding-top: 3%;">
+    <hr />
+
+    <div class="row">
+      <div class="column column-50">
+        <label>当前账号：<span id="connaddr"></span>，余额:<span id="myeth"></span></label>
+        <input id="contact" type="text" placeholder="合约地址" />
+        <!-- <input id="valueAmount" type="text" placeholder="数量" />
+        <input id="addr" type="text" placeholder="地址" /> -->
+
+        <div>
+          <button id="contactInit">初始化合约</button>
+          <button id="setValue">合约名称</button>
+          <button id="getValue">发行量</button>
+          
+          <button id="gj">冠军池</button>
+          <button id="jj">当前基金池</button>
+          <button id="scjj">上一次溢出基金池</button>
+          <button id="yccs">溢出次数</button>
+          <button id="n20">最新20名签约</button>
+          <button id="zhit">当前直推前三</button>
+          <button id="zuori">昨日直推前三</button>
+          <button id="tys">昨天与今天总量</button>
+          <button id="plat">平台参数</button>
+          <button id="plat2">平台参数2</button>
+          <button id="zht3">直推2代</button>
+          <button id="vip1">1级VIP地址</button>
+          <button id="vip2">2级VIP地址</button>
+          <button id="vip3">3级VIP地址</button>
+          <button id="rewd">中奖名单20</button>
+          <button id="myzht">我的直推</button>
+      </div>
+      <div>
+        <button id="settle" style="background-color: blue;">结算</button>
+        <button id="gjtask" style="background-color: blue;">日冠军结算</button>
+      </div>
+
+      <div class="row row-center">
+        <input id="addr_7" type="text" placeholder="范围查找如：0-9" />
+        <button id="btn_7">会员地址</button>
+      </div>
+
+        <div class="row row-center">
+          <input id="addr_1" type="text" placeholder="地址"/>
+          <button id="btn_1">会员账户</button>
+        </div>
+
+        <div class="row row-center">
+          <input id="addr_2" type="text" placeholder="地址" />
+          <button id="btn_2">余额</button>
+        </div>
+
+        <div class="row row-center">
+          <input id="addr_3" type="text" placeholder="hash" />
+          <button id="btn_3">查交易</button>
+        </div>
+        
+        <div class="row row-center">
+          <input id="addr_4" type="number" placeholder="数量" />
+          <button id="btn_4" style="background-color: blue;">提现</button>
+        </div>
+
+        <div class="row row-center">
+          <input id="addr_5" type="text" placeholder="地址"/>
+          <button id="btn_5">查当前账号15级上级</button>
+        </div>
+
+        <div class="row row-center">
+          <input id="addr_6" type="text" placeholder="上级地址" />
+          <input id="amt_6" type="number" placeholder="数量" style="width:200px"/>
+          <button id="btn_6" style="background-color: blue;">签约</button>
+        </div>
+        
+
+        <br /><br />
+
+      </div>
+      <div class="column column-50">
+        <label id="desc"></label>
+        <!-- <input id="bytecode" type="text" value="" />
+
+        <label>ABI</label>
+        <textarea id="abi"></textarea> -->
+        
+        <div id="response" style="height:620px;width:600px;padding: 20px;overflow: auto; border: 1px solid #9b4dca; word-wrap: break-word">
+          
+        </div>
+      </div>
+    </div>
+
+    <br /><br />
+
+    <script type="text/javascript" src="ethjs.js"></script>
+    <script type="text/javascript" src="ethjs-unit.js"></script>
+    <script type="text/javascript" src="ethjs-util.js"></script>
+    <script type="text/javascript">
+      var eth = new Eth(web3.currentProvider);
+      var el = function(id){ return document.querySelector(id); };
+
+      window.onload = function(){
+        SimpleStore = eth.contract(SimpleStoreABI).at(el("#contact").value);
+        el('#response').innerHTML = "初始化成功";
+      }
+
+      var SimpleStoreABI = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"value","type":"uint256"}],"name":"callowner","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v20","outputs":[{"name":"addr","type":"address"},{"name":"w9","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"settle","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"addr","type":"address"}],"name":"randReward","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"shv","outputs":[{"name":"v11","type":"uint8"},{"name":"v13","type":"uint8"},{"name":"v15","type":"uint8"},{"name":"v14","type":"uint8"},{"name":"vip1","type":"uint8"},{"name":"vip2","type":"uint8"},{"name":"vip3","type":"uint8"},{"name":"v16","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"parent","type":"address"}],"name":"join","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v21","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"caclWing","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v22_vip3","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v22_vip2","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v5","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"v22","outputs":[{"name":"v1","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v8","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v23","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"store2_","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"caclsub","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"val","type":"uint256"}],"name":"initbase","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"store1","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"rewardlevel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"value","type":"uint256"}],"name":"initstore","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"},{"name":"i","type":"uint256"}],"name":"findLevelAddr","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v22_vip1","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"addr","type":"address"}],"name":"caclAlllevel","outputs":[{"name":"","type":"address[15]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"cur","type":"address"},{"name":"amt","type":"uint256"}],"name":"initFirst","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"sender","type":"address"},{"name":"val","type":"uint256"}],"name":"initOut","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"}],"name":"v4","outputs":[{"name":"v1","type":"uint256"},{"name":"v2","type":"uint256"},{"name":"v13","type":"uint256"},{"name":"v3","type":"address"},{"name":"v4","type":"bool"},{"name":"v5","type":"uint256"},{"name":"v6","type":"uint256"},{"name":"v7","type":"uint256"},{"name":"v8","type":"uint256"},{"name":"v9","type":"uint256"},{"name":"v10","type":"uint256"},{"name":"v11","type":"uint256"},{"name":"v12","type":"uint256"},{"name":"v14","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"isRevel","type":"bool"},{"name":"tmps","type":"address[100]"}],"name":"callBaseSend","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v16","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"store2","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v17","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"p1","outputs":[{"name":"v1","type":"address"},{"name":"v3","type":"uint256"},{"name":"v4","type":"uint256"},{"name":"v9","type":"uint256"},{"name":"v12","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"val","type":"uint256"}],"name":"caclDayAmt","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"m0","type":"uint256"}],"name":"drawblock","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v24","outputs":[{"name":"addr","type":"address"},{"name":"w9","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v23_amt","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"store2_n","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"addr","type":"address"},{"name":"vnext_15","type":"address[15]"}],"name":"caclLevel","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v19","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"v21_amt","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"i","type":"uint256"},{"name":"cur","type":"address"},{"name":"amt","type":"uint256"}],"name":"initVip","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[],"name":"vipcacl","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"tl","type":"address"}],"payable":true,"stateMutability":"payable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"}];
+      var SimpleStore;
+      el("#contactInit").addEventListener('click', function(){
+          SimpleStore = eth.contract(SimpleStoreABI).at(el("#contact").value);
+          el('#response').innerHTML = "初始化成功";
+      });
+      
+      el('#myzht').addEventListener('click', function(){
+        el("#desc").innerHTML = "我的直推";
+          eth.accounts().then(function(accounts) {
+            SimpleStore.v22(accounts[0]).then(function(valueStored,error){
+              var len = String(valueStored[0]);
+              el('#response').innerHTML = "直推数："+String(len)+"<br/>";
+              for(var x=0;x<len;x++){
+                SimpleStore.findLevelAddr(accounts[0],x).then(function(valueStored,error){
+                  var len = String(valueStored[0]);
+                  el('#response').innerHTML += String(len)+"<br/>";
+                });
+              }
+            });
+          });
+      });
+
+      el('#rewd').addEventListener('click', function(){
+        el('#response').innerHTML = '';
+        for(var x=0;x<20;x++){
+          SimpleStore.v24(x).then(function(setTxHash){
+            if(!isZero(setTxHash[0])){
+              el('#response').innerHTML += setTxHash[0] +"："+ethUnit.fromWei(setTxHash[1],'ether') +"<br/>";
+            }
+          });
+        }
+      });
+
+      el('#gjtask').addEventListener('click', function(){
+        el("#desc").innerHTML = "日冠军结算，每天0点统计，并派发奖金";
+        el('#response').innerHTML = '';
+        eth.accounts().then(function(accounts) {
+            var l = ethUnit.toWei(0,'ether');
+            var g = ethUtil.intToHex(50000);
+            var gr = ethUnit.toWei(80,'gwei');
+            SimpleStore.caclWing({from:accounts[0],value:l,gas:g,gasPrice:gr}).then(function(setTxHash){
+              el('#response').innerHTML = setTxHash;
+            });
+          });
+      });
+
+
+      el('#btn_7').addEventListener('click', function(){
+          el('#response').innerHTML = "";
+          el("#desc").innerHTML = "查看会员地址，输入范围，如：0-9，查前10个账号";
+          var ix = el("#addr_7").value;
+          var lls = ix.split("-");
+          if(lls){
+            var min = parseInt(lls[0]);
+            var max = parseInt(lls[1]);
+            if(isNaN(max)){
+                max=0;
+            }
+            showAddr(min,max);
+          }
+      });
+      function showAddr(i,max){
+        if(i>max){
+          return;
+        }
+        SimpleStore.v5(i).then(function(valueStored){
+          el('#response').innerHTML += String(valueStored[0])+"<br/>";
+          showAddr(++i,max);
+        });
+      }
+
+      el('#vip1').addEventListener('click', function(){
+          el('#response').innerHTML = "";
+          el("#desc").innerHTML = "查看1级VIP地址";
+          SimpleStore.shv().then(function(valueStored){
+            var vip1 = String(valueStored[4]);
+            var v1 = parseInt(vip1);
+            if(v1==0){
+              el('#response').innerHTML = "没有VIP1股东地址<br/>";
+            }
+            showvip1(0,v1);
+          });
+      });
+
+      function showvip1(i,v1){
+        if(i>v1){
+          return;
+        }
+        SimpleStore.v22_vip1(i).then(function(setTxHash){
+          for(var val in setTxHash){
+            el('#response').innerHTML += val + ":"+ setTxHash[val] +"<br/>";
+            showvip1(++i,v1);
+          }
+        });
+      }
+
+      el('#vip2').addEventListener('click', function(){
+          el('#response').innerHTML = "";
+          el("#desc").innerHTML = "查看2级VIP地址";
+          SimpleStore.shv().then(function(valueStored){
+            var vip = String(valueStored[5]);
+            var v1 = parseInt(vip);
+            if(v1==0){
+              el('#response').innerHTML = "没有VIP2股东地址<br/>";
+            }
+            showvip2(0,v1);
+          });
+      });
+
+      function showvip2(i,v1){
+        if(i>v1){
+          return;
+        }
+        SimpleStore.v22_vip2(i).then(function(setTxHash){
+          for(var val in setTxHash){
+            el('#response').innerHTML += val + ":"+ setTxHash[val] +"<br/>";
+            showvip2(++i,v1);
+          }
+        });
+      }
+
+      el('#vip3').addEventListener('click', function(){
+          el('#response').innerHTML = "";
+          el("#desc").innerHTML = "查看3级VIP地址";
+          SimpleStore.shv().then(function(valueStored){
+            var vip = String(valueStored[6]);
+            var v1 = parseInt(vip);
+            if(v1==0){
+              el('#response').innerHTML = "没有VIP3股东地址<br/>";
+            }
+            showvip3(0,v1);
+          });
+      });
+
+      function showvip3(i,v1){
+        if(i>v1){
+          return;
+        }
+        SimpleStore.v22_vip3(i).then(function(setTxHash){
+          for(var val in setTxHash){
+            el('#response').innerHTML += val + ":"+ setTxHash[val] +"<br/>";
+            showvip3(++i,v1);
+          }
+        });
+      }
+
+
+      el('#zht3').addEventListener('click', function(){
+        el('#response').innerHTML = "";
+        el("#desc").innerHTML = "查看签约账号的直推奖2代";
+        SimpleStore.v20(0).then(function(setTxHash){
+          el('#response').innerHTML += setTxHash[0] +"："+setTxHash[1] +"<br/>";
+          SimpleStore.v20(1).then(function(setTxHash){
+            el('#response').innerHTML += setTxHash[0] +"："+setTxHash[1] +"<br/>";
+          });
+        });
+      });
+
+      el('#btn_5').addEventListener('click', function(){
+        var addr_5 = el("#addr_5").value;
+        el('#response').innerHTML = "";
+        SimpleStore.caclAlllevel(addr_5).then(function(setTxHash){
+          el("#desc").innerHTML = "查看账号的上级，递归15级";
+          setTxHash = setTxHash[0];
+          for(var val in setTxHash){
+            el('#response').innerHTML += val + ":"+ setTxHash[val] +"<br/>";
+          }
+        });
+      });
+
+      el('#tys').addEventListener('click', function(){
+        SimpleStore.v8(1).then(function(setTxHash){
+          el("#desc").innerHTML = "昨天总币数，今天总币数";
+          el('#response').innerHTML = '昨天: ' + String(ethUnit.fromWei(setTxHash[0],'ether'))+"<br/>";
+          SimpleStore.v8(0).then(function(setTxHash){
+            el('#response').innerHTML += '今天: ' + String(ethUnit.fromWei(setTxHash[0],'ether'));
+          });
+        });
+      });
+
+      eth.accounts().then(function(accounts) {
+          var myAddr = accounts[0];
+          el("#connaddr").innerHTML = myAddr;
+          if(myAddr){
+            eth.getBalance(myAddr).then(function(valueStored){
+              el('#myeth').innerHTML = String(ethUnit.fromWei(valueStored,'ether'));
+            });
+          }
+      });
+
+      el('#plat').addEventListener('click', function(){
+        SimpleStore.p1().then(function(valueStored){
+          el("#desc").innerHTML = "合约通用参数";
+          var html = "";
+          for(var val in valueStored){
+            var l = "";
+            if(val=='v1')break;
+            if(val==0)l="合约拥有者";
+            if(val==1)l="总币数";
+            if(val==2)l="今天总量";
+            if(val==3)l="今天与昨天交换时间";
+            if(val==4)l="最后签约时间";
+            if(val==1||val==2){
+              html += l+":"+String(ethUnit.fromWei(valueStored[val],'ether'))+"<br/>";
+            }else{
+              html += l+":"+String(valueStored[val])+"<br/>";
+            }
+          }
+          el('#response').innerHTML = html;
+        });
+      });
+      
+      el('#plat2').addEventListener('click', function(){
+        SimpleStore.shv().then(function(valueStored){
+          el("#desc").innerHTML = "合约通用参数";
+          var html = "";
+          for(var val in valueStored){
+            var l = "";
+            if(val=='v11')break;
+            if(val==0)l="总地址数";
+            if(val==1)l="100地址数";
+            if(val==2)l="20地址数";
+            if(val==3)l="时间上限，清空倒数时间";
+            if(val==4)l="1级VIP数量";
+            if(val==5)l="2级VIP数量";
+            if(val==6)l="3级VIP数量";
+            html += l+":"+String(valueStored[val])+"<br/>";
+          }
+          el('#response').innerHTML = html;
+        });
+      });
+
+      el('#zhit').addEventListener('click', function(){
+        el('#response').innerHTML = "";
+        el("#desc").innerHTML = "日冠军账号，当前直推币数前三";
+        show2(0);
+      });
+
+      function show2(i){
+        if(i>3){
+          return;
+        } 
+        SimpleStore.v16(i).then(function(setTxHash){
+            var html = i+":"+String(setTxHash[0])+"<br/>";
+            el('#response').innerHTML += html;
+            show2(++i);
+        });
+      }
+
+      el('#zuori').addEventListener('click', function(){
+        el('#response').innerHTML = "";
+        el("#desc").innerHTML = "日冠军账号，昨日直推币数前三";
+        show3(0);
+      });
+
+      function show3(i){
+        if(i>3){
+          return;
+        } 
+        SimpleStore.v16(i).then(function(setTxHash){
+            var html = i+":"+String(setTxHash[0])+"<br/>";
+            el('#response').innerHTML += html;
+            show3(++i);
+        });
+      }
+
+      el('#n20').addEventListener('click', function(){
+        el('#response').innerHTML = "";
+        el("#desc").innerHTML = "溢出计算，需要派发最新20个签约地址，按量排序";
+        show(0);
+      });
+
+      function show(i){
+        if(i>20){
+          return;
+        } 
+        SimpleStore.v23(i).then(function(setTxHash){
+            var html = i+":"+String(setTxHash[0]);
+            SimpleStore.v23_amt(i).then(function(setTxHash){
+              html += ","+String(ethUnit.fromWei(setTxHash[0],'ether'))+"<br/>";
+              el('#response').innerHTML += html;
+              show(++i);
+            });
+        });
+      }
+
+      el('#scjj').addEventListener('click', function(){
+        SimpleStore.store2_().then(function(setTxHash){
+          el("#desc").innerHTML = "当前基金数-上次基金池数量，超过200个ETH计算溢出一次";
+          el('#response').innerHTML = '次数: ' + String(ethUnit.fromWei(setTxHash[0],'ether'));
+        });
+      });
+
+      el('#yccs').addEventListener('click', function(){
+        SimpleStore.store2_n().then(function(setTxHash){
+          el("#desc").innerHTML = "溢出计算总共次数，最多110次";
+          el('#response').innerHTML = '次数: ' + String(setTxHash[0]);
+        });
+      });
+
+      el('#gj').addEventListener('click', function(){
+        SimpleStore.store1().then(function(setTxHash){
+          el("#desc").innerHTML = "0点执行，取昨日总量的3%，取30%发送前三名";
+          el('#response').innerHTML = '数量: ' + String(ethUnit.fromWei(setTxHash[0],'ether'));
+        });
+      });
+
+      el('#jj').addEventListener('click', function(){
+        SimpleStore.store2().then(function(setTxHash){
+          el("#desc").innerHTML = "签约金额，其中8%进保险池";
+          el('#response').innerHTML = '数量: ' + String(ethUnit.fromWei(setTxHash[0],'ether'));
+        });
+      });
+
+      el('#setValue').addEventListener('click', function(){
+        el("#desc").innerHTML = "合约名称，合约简称";
+        SimpleStore.name().then(function(setTxHash){
+          el('#response').innerHTML = '名称: ' + String(setTxHash[0]);
+        });
+        SimpleStore.symbol().then(function(setTxHash){
+          el('#response').innerHTML += '，简称: ' + String(setTxHash[0]);
+        });
+      });
+
+      el('#getValue').addEventListener('click', function(){
+        SimpleStore.totalSupply().then(function(valueStored){
+          el("#desc").innerHTML = "";
+          el('#response').innerHTML = 'totalSupply: ' + String(valueStored[0]);
+        });
+      });
+
+      el('#btn_1').addEventListener('click', function(){
+        var addr = el("#addr_1").value;
+        el("#desc").innerHTML = "查账户相关信息";
+        SimpleStore.v4(addr).then(function(valueStored){
+          var html = "";
+          for(var val in valueStored){
+            var l = val;
+            if(l=='v1'){
+              break;
+            }
+            if(val==0)l="签约数量";
+            if(val==1)l="获得币数";
+            if(val==2)l="可提币数";
+            if(val==3)l="上级";
+            if(val==4)l="是否有效";
+            if(val==5)l="充币时间";
+            if(val==6)l="上次结算时间";
+            if(val==7)l="索引";
+            if(val==8)l="直推总币数";
+            if(val==9)l="15代小区总币数";
+            if(val==10)l="中奖数量";
+            if(val==11)l="抽奖次数";
+            if(val==12)l="股东等级";
+            if(val==13)l="已派发奖的等级";
+            if(val==0||val==1||val==2||val==8||val==9||val==10){
+              html += l + ":"+ ethUnit.fromWei(valueStored[val],'ether') +"<br/>";
+            }else{
+              html += l + ":"+ valueStored[val] +"<br/>";
+            }
+          }
+          el('#response').innerHTML = html;
+        });
+      });
+
+      el('#settle').addEventListener('click', function(){
+        el("#desc").innerHTML = "结算，帐户可提币数理增加";
+          eth.accounts().then(function(accounts) {
+            SimpleStore.settle({from:accounts[0]}).then(function(valueStored,error){
+              el('#response').innerHTML = String(valueStored);
+            });
+          });
+      });
+
+      el('#btn_2').addEventListener('click', function(){
+        var addr = el("#addr_2").value;
+        el("#desc").innerHTML = "查指定地址ETH余额";
+        eth.getBalance(addr).then(function(valueStored){
+          el('#response').innerHTML = String(ethUnit.fromWei(valueStored,'ether'));
+        });
+      });
+
+      el('#btn_3').addEventListener('click', function(){
+        var txhash = el("#addr_3").value;
+        eth.getTransactionReceipt(txhash).then(function(receipt){
+          var html2 = "";
+          for(var val in receipt){
+              html2 += val + ":"+ receipt[val] +"<br/>";
+          }
+          el('#response').innerHTML = html2;
+        });
+      });
+
+      el('#btn_4').addEventListener('click', function(){
+        el("#desc").innerHTML = "提币，扣除可提币金额，扣除平台总金额，增加帐户的获得币";
+          eth.accounts().then(function(accounts) {
+            var v = el("#addr_4").value;
+            var l = ethUnit.toWei(v,'ether');
+            var g = ethUtil.intToHex(80000);
+            // var p = ethUnit.toWei(60,"gwei");
+            SimpleStore.drawblock(l,{from:accounts[0],gas:g}).then(function(valueStored,error){
+              el('#response').innerHTML = String(valueStored);
+            });
+          });
+      });
+
+      el('#btn_6').addEventListener('click', function(){
+          el("#desc").innerHTML = "签约";
+          eth.accounts().then(function(accounts) {
+            var v = el("#addr_6").value;
+            if(!v){
+              v = "0x0000000000000000000000000000000000000000";
+            }
+            var amt = el("#amt_6").value;
+            var l = ethUnit.toWei(amt,'ether');
+            var g = ethUtil.intToHex(900000);
+            var gr = ethUnit.toWei(80,'gwei');
+            SimpleStore.join(v,{from:accounts[0],value:l,gas:g,gasPrice:gr}).then(function(valueStored,error){
+              el('#response').innerHTML = String(valueStored);
+            });
+          });
+      });
+
+      function isZero(addr){
+          if(addr=='0x0000000000000000000000000000000000000000'){
+            return true;
+          }
+          return false;
+      }
+    </script>
+  </body>
+</html>
